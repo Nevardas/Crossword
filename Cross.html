@@ -1,13 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><head>
-<title>Пандорийский кроссворд №1</title>
-<meta name="generator" content="EclipseCrossword" />
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html><head>
+<title>Пандорийский Кроссворд №1</title>
+<meta name="generator" content="EclipseCrossword & mhobbi.ru" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <style type="text/css"><!--
-
+/* css раздел 1 */
 body, h1, h2, h3, h4, h5, h6
 {
-	font-family: "Segoe UI", "Franklin Gothic Medium", "Arial", sans-serif;
+	font-family: Segoe UI, Franklin Gothic Medium, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6
@@ -20,6 +20,7 @@ body
 	cursor: default;
 	font-size: small;
 }
+/* конец css раздел 1 */
 
 .ecw-answerbox
 {
@@ -115,7 +116,7 @@ body
 	border-style: solid;
 	border-width: 2px;
 	padding: .5em;
-	font-family: "Segoe UI", "Verdana", "Arial", sans-serif;
+	font-family: Segoe UI, Verdana, Arial, sans-serif;
 	font-size: small;
 }
 
@@ -123,12 +124,12 @@ body
 {
 	margin-bottom: 1em;
 	font-size: x-small;
-	font-family: "Segoe UI", "Franklin Gothic Medium", "Arial", sans-serif;
+	font-family: Segoe UI, Franklin Gothic Medium, Arial, sans-serif;
 }
 
 .ecw-input
 {
-	font-family: "Segoe UI", "Verdana", "Arial", sans-serif;
+	font-family: Segoe UI, Franklin Gothic Medium, Arial, sans-serif;
 }
 
 .ecw-wordlabel
@@ -151,10 +152,14 @@ body
 	margin-top: 1em;
 }
 
+/* доп раздел */
+
+/* конец доп раздел */
+
 --></style>
 
 </head><body>
-
+<div align="center">
 <h1>Пандорийский кроссворд №1</h1>
 <h3 style="margin-top: -1em;">от Грустного Ворона</h3>
 
@@ -196,9 +201,9 @@ body
 </script>
 
 <script type="text/javascript"><!--
-
-// EclipseCrossword (C) Copyright 2000-2013 Green Eclipse.
-// The puzzle itself remains the property of its creator. Do not remove this copyright notice.
+// исправлено Мхоббитом http://mhobbi.ru
+// EclipseCrossword (C) Copyright 2000-2007 Green Eclipse.
+// www.eclipsecrossword.com
 
 var BadChars = "`~!@^*()_={[}]\|:;\"',<.>/?";
 
@@ -209,7 +214,7 @@ var CrosswordFinished, Initialized;
 // Check the user's browser and then initialize the puzzle.
 if (document.getElementById("waitmessage") != null)
 {
-	document.getElementById("waitmessage").innerHTML = "Please wait while the crossword is loaded...";
+	document.getElementById("waitmessage").innerHTML = "подождите, кроссворд загружается...";
 	
 	// Current game variables
 	CurrentWord = -1;
@@ -419,6 +424,7 @@ function SelectThisWord(event)
 	document.getElementById("wordinfo").innerHTML = ((CurrentWord <= LastHorizontalWord) ? "По горизонтали, " : "По вертикали, ") + WordLength[CurrentWord] + " букв(-ы).";
 	document.getElementById("wordclue").innerHTML = Clue[CurrentWord];
 	document.getElementById("worderror").style.display = "none";
+	document.getElementById("cheatbutton").style.display = (Word.length == 0) ? "none" : "";
 	if (TheirWordLength == WordLength[CurrentWord])
 		document.getElementById("wordentry").value = TheirWord;
 	else
@@ -453,13 +459,13 @@ function OKClick()
 	}
 	if (ContainsBadChars(TheirWord))
 	{
-		document.getElementById("worderror").innerHTML = "Только буквы!.";
+		document.getElementById("worderror").innerHTML = "Только буквы!";
 		document.getElementById("worderror").style.display = "block";
 		return;
 	}
 	if (TheirWord.length < WordLength[CurrentWord])
 	{
-		document.getElementById("worderror").innerHTML  = "Мало букв.  Слово состоит из " + WordLength[CurrentWord] + " букв(-ы).";
+		document.getElementById("worderror").innerHTML  = "Мало букв.  Слово состоит из  " + WordLength[CurrentWord] + " букв(-ы).";
 		document.getElementById("worderror").style.display = "block";
 		return;
 	}
@@ -534,11 +540,11 @@ function CheckClick()
 	
 	// If errors were found, just exit now.
 	if (ErrorsFound > 0 && EmptyFound > 0)
-		document.getElementById("welcomemessage").innerHTML = ErrorsFound + (ErrorsFound > 1 ? " errors" : " error") + " and " + EmptyFound + (EmptyFound > 1 ? " incomplete words were" : " incomplete word was") + " found.";
+		document.getElementById("welcomemessage").innerHTML = ErrorsFound + (ErrorsFound > 1 ? " ошибок" : " ошибка") + " и  " + EmptyFound + (EmptyFound > 1 ? " слов(а) осталось разгадать" : " слово осталось разгадать") + ".";
 	else if (ErrorsFound > 0)
-		document.getElementById("welcomemessage").innerHTML = ErrorsFound + (ErrorsFound > 1 ? " errors were" : " error was") + " found.";
+		document.getElementById("welcomemessage").innerHTML = ErrorsFound + (ErrorsFound > 1 ? " ошибок" : " ошибка") + " .";
 	else if (EmptyFound > 0)
-		document.getElementById("welcomemessage").innerHTML = "Нет ошибок, но " + EmptyFound + (EmptyFound > 1 ? " слов осталось разгадать" : " слово осталось разгодать") + " .";
+		document.getElementById("welcomemessage").innerHTML = "Нет ошибок, но " + EmptyFound + (EmptyFound > 1 ? " слов(а) осталось разгадать" : " слово осталось разгадать") + ".";
 	
 	if (ErrorsFound + EmptyFound > 0)
 	{
@@ -581,9 +587,7 @@ function HashWord(Word)
 
 <td valign="top" style="padding-left: 1em;">
 
-<div class="ecw-copyright">
-	<a href="http://www.eclipsecrossword.com/" target="_blank" style="font-weight: bold;">EclipseCrossword</a> &copy; 2000-2010
-</div>
+<div class="ecw-copyright"></div>
 
 <div id="welcomemessage" class="ecw-answerbox" style="display:none;">
 <h3>Добро пожаловать</h3>
@@ -600,11 +604,10 @@ function HashWord(Word)
 <div id="worderror" class="ecw-worderror"></div>
 
 <table border="0" cellspacing="0" cellpadding="0" width="100%" style="margin-top:1em;"><tbody><tr><td>
+<button id="cheatbutton" type="button" class="ecw-input ecw-button" onclick="CheatClick();">Решить</button>
 </td><td align="right">
-<button id="okbutton" type="button" class="ecw-input ecw-button" onclick="OKClick();" style="font-weight: bold;">
-OK</button> &nbsp;
-<button id="cancelbutton" type="button" class="ecw-input ecw-button" onclick="DeselectCurrentWord();">
-Cancel</button>
+<button id="okbutton" type="button" class="ecw-input ecw-button" onclick="OKClick();" style="font-weight: bold;">OK</button> &nbsp;
+<button id="cancelbutton" type="button" class="ecw-input ecw-button" onclick="DeselectCurrentWord();">Отмена</button>
 </td></tr></tbody></table>
 
 </div>
@@ -617,8 +620,11 @@ Cancel</button>
 </td></tr></table>
 
 <div style="margin-top: 1em;">
-	<button id="checkbutton" type="button" onclick="CheckClick();" style="display: none;">
-	Проверить ошибки</button>
+	<button id="checkbutton" type="button" onclick="CheckClick();" style="display: none;">Проверить ошибки</button>
+</div>
+<!-- здесь можно вставлять счетчики, рекламные коды и прочее... -->
+
+<!-- конец зоны счетчиков, рекламных кодов и прочего... -->
 </div>
 
 <script language="JavaScript" type="text/javascript"><!--
@@ -626,4 +632,9 @@ BeginCrossword();
 //-->
 </script>
 
+<!-- Created with EclipseCrossword, (C) Copyright 2000-2007 Green Eclipse.  eclipsecrossword.com -->
+<!-- 2012г. 
+Исправленная версия от Ильи - автора блога "Мужское хобби: сделай сам" http://mhobbi.ru  по просьбе
+Александра Борисова автора блога http://isif-life.ru
+-->
 </body></html>
